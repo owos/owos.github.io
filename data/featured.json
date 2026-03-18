@@ -1,0 +1,40 @@
+[
+  {
+    "venue": "ACL",
+    "year": "2026",
+    "title": "FLEXITOKENS: Flexible Tokenization for Evolving Language Models",
+    "desc": "We propose a flexible tokenization framework that allows language models to adapt their tokenization strategy during training and inference, enabling better handling of evolving vocabularies and multilingual text.",
+    "url": "https://arxiv.org/abs/2507.12720",
+    "image": "assets/img/papers/flexitoken_vs_BPE.png",
+    "reverse": false
+  },
+  {
+    "venue": "TMLR",
+    "year": "2026",
+    "title": "Continually Adding New Languages to Multilingual Language Models",
+    "desc": "We propose LayRA (Layer-Selective LoRA), which adds new languages and instruction-tuning to pre-trained multilingual models by applying low-rank adapters only to the initial and final layers — preserving existing language capabilities while efficiently learning new ones.",
+    "url": "https://arxiv.org/abs/2509.11414",
+    "image": "assets/img/papers/layra.jpg",
+    "reverse": true
+  },
+  {
+    "venue": "ACL",
+    "year": "2025",
+    "award": "🏆 Best Social Impact",
+    "title": "AfriMed-QA: A Pan-African, Multi-Specialty, Medical Question-Answering Benchmark Dataset",
+    "desc": "A pan-African medical QA benchmark evaluating large language models on medical knowledge across African healthcare contexts. Joint work with partners from Google, PATH, Intron, and Sinsoke.",
+    "url": "publications.html",
+    "image": "assets/img/papers/afrimedqa.png",
+    "reverse": false
+  },
+  
+  {
+    "venue": "EMNLP",
+    "year": "2022",
+    "title": "Bloom Library: Multimodal Datasets in 300+ Languages for a Variety of Downstream Tasks",
+    "desc": "A linguistically diverse collection of multimodal and multilingual datasets covering 363 languages across 32 language families — among the most multilingual datasets for language modeling, image captioning, and speech.",
+    "url": "https://aclanthology.org/2022.emnlp-main.590",
+    "image": "assets/img/papers/bloom.png",
+    "reverse": true
+  }
+]

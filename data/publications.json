@@ -1,0 +1,104 @@
+[
+  {
+    "year": "2025",
+    "papers": [
+      {
+        "venue": "ACL 2025",
+        "award": "🏆 Best Social Impact Paper",
+        "title": "AfriMed-QA: A Pan-African, Multi-Specialty, Medical Question-Answering Benchmark Dataset",
+        "authors": "Tobi Olatunji, <me>Abraham Owodunni</me>, et al. (Joint work: Google, PATH, Intron, Sinsoke)",
+        "url": ""
+      },
+      {
+        "venue": "Interspeech 2025",
+        "title": "The NaijaVoices Dataset: Cultivating Large-Scale, High-Quality, Culturally-Rich Speech Data for African Languages",
+        "authors": "<me>Abraham Owodunni</me>, et al.",
+        "url": ""
+      },
+      {
+        "venue": "ICML 2025 Workshop",
+        "tag": "Preprint",
+        "title": "FLEXITOKENS: Flexible Tokenization for Evolving Language Models",
+        "authors": "<me>Abraham Owodunni</me>, et al.",
+        "url": "https://arxiv.org/abs/2507.12720"
+      }
+    ]
+  },
+  {
+    "year": "2024",
+    "papers": [
+      {
+        "venue": "TMLR",
+        "year": "2026",
+        "title": "Continually Adding New Languages to Multilingual Language Models",
+        "authors": "<me>Abraham Owodunni</me>, et al.",
+        "url": "https://arxiv.org/abs/2509.11414"
+      },
+      {
+        "venue": "Interspeech 2024",
+        "title": "TTS for African Languages",
+        "authors": "<me>Abraham Owodunni</me>, et al.",
+        "url": "https://arxiv.org/abs/2406.11727"
+      },
+      {
+        "venue": "Interspeech 2024",
+        "title": "STT for African Languages",
+        "authors": "<me>Abraham Owodunni</me>, et al.",
+        "url": "https://arxiv.org/abs/2406.12387"
+      },
+      {
+        "venue": "EACL Findings 2024",
+        "title": "AccentFold: A Journey through African Accents for Zero-Shot ASR Adaptation to Target Accents",
+        "authors": "<me>Abraham Owodunni</me>, et al.",
+        "url": ""
+      }
+    ]
+  },
+  {
+    "year": "2023",
+    "papers": [
+      {
+        "venue": "ICLR: AfricaNLP",
+        "tag": "First Author",
+        "title": "Koya: A Recommender System for Large Language Model Selection",
+        "authors": "<me>Abraham Toluwase Owodunni</me>, Chris Chinenye Emezue",
+        "url": ""
+      },
+      {
+        "venue": "EMNLP Findings 2023",
+        "title": "Cross-lingual Open-Retrieval Question Answering for African Languages",
+        "authors": "Odunayo Ogundepo, Tajuddeen Gwadabe, Clara Rivera, Jonathan Clark, Sebastian Ruder, David Adelani, Bonaventure Dossou, ..., <me>Abraham Owodunni</me>, et al.",
+        "url": "https://aclanthology.org/2023.findings-emnlp.997"
+      },
+      {
+        "venue": "EMNLP 2023",
+        "title": "Better Quality Pre-training Data and T5 Models for African Languages",
+        "authors": "Akintunde Oladipo, Mofetoluwa Adeyemi, Orevaoghene Ahia, <me>Abraham Owodunni</me>, Odunayo Ogundepo, David Adelani, Jimmy Lin",
+        "url": "https://aclanthology.org/2023.emnlp-main.11/"
+      },
+      {
+        "venue": "Preprint",
+        "title": "A Decade of Scholarly Research on Open Knowledge Graphs",
+        "authors": "Houcemeddine Turki, <me>Abraham Toluwase Owodunni</me>, Mohamed Ali Hadj Taieb, René Fabrice Bile, Mohamed Ben Aouicha, Vilém Zouhar",
+        "url": "https://arxiv.org/abs/2306.13186"
+      },
+      {
+        "venue": "Preprint",
+        "title": "Machine Learning for Healthcare: A Bibliometric Study of Contributions from Africa",
+        "authors": "Houcemeddine Turki, Houda Sekkal, ..., <me>Abraham Owodunni</me>, et al.",
+        "url": ""
+      }
+    ]
+  },
+  {
+    "year": "2022",
+    "papers": [
+      {
+        "venue": "EMNLP 2022",
+        "title": "Bloom Library: Multimodal Datasets in 300+ Languages for a Variety of Downstream Tasks",
+        "authors": "Colin Leong, Joshua Nemecek, Jacob Mansdorfer, Anna Filighera, <me>Abraham Owodunni</me>, Daniel Whitenack",
+        "url": "https://aclanthology.org/2022.emnlp-main.590"
+      }
+    ]
+  }
+]
