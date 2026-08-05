@@ -9,7 +9,7 @@ date: 2026-08-05
 
 Most people treat the tokenizer as a fixed black box. Text goes in, token IDs come out, and whatever happens in between is someone else's problem. But there is a step *before* the tokens — a plain regular expression — that quietly shapes how well a model handles your input. Once you can read it, you can exploit it, and in many cases you can get real quality gains **without training anything**.
 
-This post is about that step. I'll cover why there's no "correct" tokenization, how to read the pretokenization regex, how to format your inputs to cooperate with it, why the right trick for one model is the *exact opposite* of the right trick for another, and where these free inference-time gains hit a hard ceiling (multilingual text) that only retraining can fix. Token healing gets a short mention at the end as a bonus.
+This post is about that step. I'll cover why there's no "perfect" tokenization, how to read the pretokenization regex, how to format your inputs to cooperate with it, why the right trick for one model is the *exact opposite* of the right trick for another, and where these free inference-time gains hit a hard ceiling (multilingual text) that only retraining can fix. Token healing gets a short mention at the end as a bonus.
 
 ## There is no perfect way to tokenize
 

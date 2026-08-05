@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog – Abraham Owodunni</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚛️</text></svg>" />
-  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../../css/style.css" />
   <!-- marked.js — renders your .md files to HTML -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script src="../js/main.js"></script>
+  <script src="../../js/main.js"></script>
   <style>
     /* Blog post prose styles */
     .post-body {
@@ -90,11 +90,11 @@
   <!-- ==================== NAV ==================== -->
   <nav class="nav">
     <div class="container nav__inner">
-      <a href="../index.html" class="nav__logo">Abraham Owodunni</a>
+      <a href="../../index.html" class="nav__logo">Abraham Owodunni</a>
       <div class="nav__links">
-        <a href="../index.html" class="nav__link">About</a>
-        <a href="../publications.html" class="nav__link">Publications</a>
-        <a href="../blog.html" class="nav__link active">Blog</a>
+        <a href="../../index.html" class="nav__link">About</a>
+        <a href="../../publications.html" class="nav__link">Publications</a>
+        <a href="../../blog.html" class="nav__link active">Blog</a>
         <a href="https://twitter.com/abrahamowos" target="_blank" rel="noopener" class="nav__link">Say hello 👋🏾</a>
         <button class="theme-toggle" aria-label="Toggle theme">
           <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -107,9 +107,9 @@
     </div>
     <div class="container">
       <div class="nav__mobile">
-        <a href="../index.html" class="nav__link">About</a>
-        <a href="../publications.html" class="nav__link">Publications</a>
-        <a href="../blog.html" class="nav__link">Blog</a>
+        <a href="../../index.html" class="nav__link">About</a>
+        <a href="../../publications.html" class="nav__link">Publications</a>
+        <a href="../../blog.html" class="nav__link">Blog</a>
         <a href="https://twitter.com/abrahamowos" target="_blank" rel="noopener" class="nav__link">Say hello 👋🏾</a>
       </div>
     </div>
@@ -118,7 +118,7 @@
   <!-- ==================== POST CONTENT ==================== -->
   <div class="page-header" style="padding-bottom: 0;">
     <div class="container">
-      <a href="../blog.html" class="section__link" style="display:inline-block; margin-bottom: 20px;">← All posts</a>
+      <a href="../../blog.html" class="section__link" style="display:inline-block; margin-bottom: 20px;">← All posts</a>
       <div class="post-meta">
         <span class="post-meta__date" id="post-date"></span>
       </div>
@@ -168,7 +168,7 @@
       const dateEl = document.getElementById('post-date');
 
       if (!postFile) {
-        bodyEl.innerHTML = '<p class="post-error">No post specified. <a href="../blog.html">Back to blog →</a></p>';
+        bodyEl.innerHTML = '<p class="post-error">No post specified. <a href="../../blog.html">Back to blog →</a></p>';
         return;
       }
 
@@ -201,7 +201,7 @@
           bodyEl.innerHTML = marked.parse(content);
         })
         .catch(() => {
-          bodyEl.innerHTML = '<p class="post-error">Post not found. <a href="../blog.html">Back to blog →</a></p>';
+          bodyEl.innerHTML = '<p class="post-error">Post not found. <a href="../../blog.html">Back to blog →</a></p>';
         });
     })();
   </script>
