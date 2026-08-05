@@ -11,7 +11,7 @@ Most people treat the tokenizer as a fixed black box. Text goes in, token IDs co
 
 This post is about that step. I'll cover why there's no "perfect" tokenization, how to read the pretokenization regex, how to format your inputs to cooperate with it, why the right trick for one model is the *exact opposite* of the right trick for another, and where these free inference-time gains hit a hard ceiling (multilingual text) that only retraining can fix. Token healing gets a short mention at the end as a bonus.
 
-## There is no perfect way to tokenize
+## There is no perfect way to tokenize a text
 
 Start with a deceptively simple input:
 
