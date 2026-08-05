@@ -3,7 +3,7 @@ title: LLM Pre-Pretokenization: Free Gains You Leave on the Table
 date: 2026-08-05
 ---
 
-# LLM Pre-Pretokenization: Free Gains You Leave on the Table
+# LLM Pretokenization: Free Gains You Leave on the Table
 
 *This is the written version of a talk I gave at [PyOhio 2026](https://www.pyohio.org/2026/program/talks/llm-token-healing-and-regex/). If you couldn't make it, this post has everything — the regexes, the examples, and the fixes — without needing to squint at slides. Slides are [here](https://docs.google.com/presentation/d/1u_OCxVZzMzTCbRfEEogaqtSYrKMZ58cnR3tvdh0v-n4).*
 
