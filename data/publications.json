@@ -43,14 +43,14 @@
       
       {
         "venue": "Interspeech 2024",
-        "title": "TTS for African Languages",
-        "authors": "<me>Abraham Owodunni</me>, et al.",
+        "title": "1000 African Voices: Advancing inclusive multi-speaker multi-accent speech synthesis",
+        "authors": "Sewade Ogun, <me>Abraham Owodunni</me>, et al.",
         "url": "https://arxiv.org/abs/2406.11727"
       },
       {
         "venue": "Interspeech 2024",
-        "title": "STT for African Languages",
-        "authors": "<me>Abraham Owodunni</me>, et al.",
+        "title": "Performant ASR Models for Medical Entities in Accented Speech",
+        "authors": "Tejumade Afonja, ..., <me>Abraham Owodunni</me>, et al.",
         "url": "https://arxiv.org/abs/2406.12387"
       },
       {
@@ -80,7 +80,7 @@
       {
         "venue": "EMNLP 2023",
         "title": "Better Quality Pre-training Data and T5 Models for African Languages",
-        "authors": "Akintunde Oladipo, Mofetoluwa Adeyemi, Orevaoghene Ahia, <me>Abraham Owodunni</me>, Odunayo Ogundepo, David Adelani, Jimmy Lin",
+        "authors": "Akintunde Oladipo, ..., <me>Abraham Owodunni</me> ..., David Adelani, Jimmy Lin",
         "url": "https://aclanthology.org/2023.emnlp-main.11/"
       },
       {
