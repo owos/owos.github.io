@@ -23,11 +23,11 @@ How should the number be split into tokens? Here are three plausible answers:
 
 ```
 Option A:  123 | 456 | 7             (chunks of 3, left to right)
-Option B:  1234 | 56 | 7             (some other chunking)
+Option B:  12 | 34 | 567             (Indian numbering: last 3 digits, then 2s)
 Option C:  1 | 2 | 3 | 4 | 5 | 6 | 7 (every digit on its own)
 ```
 
-None of these is *obviously* right. Chunks of three align with how we read large numbers (millions, thousands, ones), but they misalign when the total digit count isn't a multiple of three. Per-digit tokenization is clean for arithmetic but uses more tokens. There's no free lunch, every scheme trades something off.
+None of these is obviously right. Western grouping in threes aligns with how English speakers read large numbers (millions, thousands, ones). But the Indian numbering system groups differently: the last three digits together, then pairs after that, so 1234567 reads as 12,34,567 (twelve lakh thirty-four thousand five hundred sixty-seven). Per-digit tokenization is clean for arithmetic but uses more tokens. There's no free lunch, and there isn't even a single convention the world agrees on. Every scheme trades something off.
 
 And critically: **different models made different choices here.** That's not a bug; it's a design decision baked into each tokenizer. Understanding the decision is what lets you use it to your advantage.
 
@@ -35,7 +35,7 @@ And critically: **different models made different choices here.** That's not a b
 
 First, an important distinction that most people blur together.
 
-**Pretokenization** is how raw text is split into coarse chunks *before* BPE runs. It's done by a regular expression.
+**Pretokenization** is how raw text is split into coarse chunks *before* [Byte Pair Encoding (BPE)](https://en.wikipedia.org/wiki/Byte-pair_encoding) runs. It's done by a regular expression.
 
 **Tokenization** is what BPE does *afterward*, merging within each chunk into final vocabulary tokens.
 
@@ -59,13 +59,13 @@ The regex draws the fences. BPE decides how to cut inside each fence. The one ru
 
 ## How to read the pretokenization regex
 
-Almost every modern LLM uses a variant of the same pattern, inherited from OpenAI's `cl100k` (the GPT-4 tokenizer). Here it is, as used by **OLMo 2** (vocab size 100,352):
+Almost every modern LLM uses a variant of the same pattern, inherited from OpenAI's [`cl100k`](https://tiktokenizer.vercel.app/?model=cl100k_base) (the GPT-4 tokenizer). Here it is, as used by [**OLMo 2**](https://huggingface.co/allenai/OLMo-2-0425-1B-Instruct) (vocab size 100,352):
 
 ```
 (?i:'s|'t|'re|'ve|'m|'ll|'d)|[^\r\n\p{L}\p{N}]?\p{L}+|\p{N}{1,3}| ?[^\s\p{L}\p{N}]+[\r\n]*|\s*[\r\n]+|\s+(?!\S)|\s+
 ```
 
-It looks like line noise, but it's just a list of alternatives separated by `|`, tried left to right. The first branch that matches at the current position wins, consumes those characters, and the process repeats from the next position. There are seven branches:
+There are seven branches here:
 
 **1. Contractions** — `(?i:'s|'t|'re|'ve|'m|'ll|'d)`
 Matches English contraction suffixes (`'s`, `'ll`, `'ve`, …) as their own tokens, case-insensitively. This branch is first on purpose, so `'s` is grabbed as a contraction before the letters branch can do anything else with it.
@@ -98,7 +98,7 @@ A couple of symbols worth knowing if you want to read these yourself:
 
 ## Reading the regex tells you how to format your input
 
-Here's the payoff. You can't change the regex on an already-trained model, the model's embeddings were learned for the token sequences its tokenizer produces. But you *can* change what you feed it, so that when the regex splits your text, the chunks are ones the model handles well. I call this **pre-pretokenization**: shaping the input upstream of the pretokenizer.
+You can't change the regex on an already-trained model, the model's embeddings were learned for the token sequences its tokenizer produces. But you *can* change what you feed it, so that when the regex splits your text, the chunks are ones the model handles well. I call this **pre-pretokenization**: shaping the input upstream of the pretokenizer.
 
 Each regex branch implies a formatting rule. Here are four, tested on OLMo 2:
 
@@ -153,9 +153,7 @@ None of these require training. You're just formatting inputs to cooperate with 
 
 ## The same trick, reversed: OLMo vs. Qwen
 
-Now the part that makes the whole approach click.
-
-**Qwen 3** (vocab size 151,669) uses a regex that is **identical to OLMo's except one branch**:
+[**Qwen 3**](https://huggingface.co/Qwen/Qwen3-0.6B) (vocab size 151,669) uses a regex that is **identical to OLMo's except one branch**:
 
 ```
 OLMo:   ... |\p{N}{1,3}| ...      # digit runs of 1-3
@@ -181,7 +179,7 @@ def strip_number_punctuation(text: str) -> str:
                   lambda m: re.sub(r'[,_ ]', '', m.group()), text)
 ```
 
-Same goal — clean number tokenization — opposite operation, entirely because of one regex branch. This is the real lesson of the talk. It isn't "add commas" or "strip commas." It's: **read your model's regex first, because the right move depends on it.** A trick that helps one model can actively hurt another.
+Same goal, opposite operation, entirely because of one regex branch. Read your model's regex before you apply any rewrite. The right move depends on it, and a trick that helps one model can hurt another.
 
 This generalizes. OLMo, Llama 3, and Phi-4 all share the identical `cl100k` pattern with `\p{N}{1,3}`, so number rewrites transfer across all three. Qwen is the outlier. You can predict which camp a model is in just by reading one branch of its regex — before running a single token through it.
 
@@ -249,9 +247,9 @@ Measured over Hindi, Tamil, and Telugu text, the effect is dramatic — and, imp
 
 Fertility on Tamil drops nearly fivefold; grapheme integrity goes to 100% for all three scripts. And because English is unchanged, the fix is surgical — it helps Indic scripts with no collateral cost elsewhere.
 
-**But here's the catch that keeps this honest:** this is a **training-time** fix. Changing the regex means retraining the tokenizer, and then the model, because the vocabulary changes. Unlike the number rewrites, there is no comma-trick that fixes Tamil fragmentation at inference. You cannot format your way out of it.
+You should not that changing the regex means retraining the tokenizer, and then the model, because the vocabulary changes. Unlike the number rewrites, there is no comma-trick that fixes Tamil fragmentation at inference. You cannot format your way out of it.
 
-That said, reading the regex is *still* free and still useful here, it tells you **which existing model to choose** for a given language. Grep a model's pretokenizer regex for `\p{M}`. Tokenizers that include it (the newer o200k / GPT-4o family does, with a case-aware letter branch that also handles combining marks) fragment Indic scripts far less than the `cl100k` family that OLMo, Llama, and Phi use. So even without retraining, the regex is a cheap, decisive signal for model selection on multilingual tasks. Fewer pretokenization splits means fewer tokens, which means faster and cheaper inference, and usually better quality on that language.
+That said, reading the regex is *still* free and still useful here, it tells you **which existing model to choose** for a given language. Grep a model's pretokenizer regex for `\p{M}`. Tokenizers that include it (the newer o200k / GPT-4o family does, with a case-aware letter branch that also handles combining marks) fragment Indic scripts far less than the `cl100k` family that OLMo, Llama, and Phi use. So even without retraining, the regex is a cheap, decisive signal for model selection on multilingual tasks. Fewer pretokenization splits means fewer tokens, which means faster and cheaper inference, and usually better quality on that language if trained sufficiently.
 
 ## Bonus: token healing
 
@@ -275,6 +273,8 @@ It helps most on completion-style prompts that end mid-token; with chat template
 ## Takeaways
 
 Pretokenization sits upstream of everything the model does. It's cheap to inspect and mostly ignored, which makes it a reliable source of overlooked gains. Concretely:
+
+- **If you're deploying an LLM for a domain-specific use case, understanding the regex is something you should invest in.** 
 
 - **Read the regex.** It's just branches tried in order. One branch (the digit rule) is the difference between OLMo and Qwen.
 - **Format inputs to cooperate with it.** Add separators for `\p{N}{1,3}` models, strip them for `\p{N}` models. Fix whitespace and units. Free at inference.
