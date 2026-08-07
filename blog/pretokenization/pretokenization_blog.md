@@ -27,9 +27,9 @@ Option B:  12 | 34 | 567             (Indian numbering: last 3 digits, then 2s)
 Option C:  1 | 2 | 3 | 4 | 5 | 6 | 7 (every digit on its own)
 ```
 
-None of these is obviously right. Western grouping in threes aligns with how English speakers read large numbers (millions, thousands, ones). But the Indian numbering system groups differently: the last three digits together, then pairs after that, so 1234567 reads as 12,34,567 (twelve lakh thirty-four thousand five hundred sixty-seven). Per-digit tokenization is clean for arithmetic but uses more tokens. There's no free lunch, and there isn't even a single convention the world agrees on. Every scheme trades something off.
+None of these is an obvious right option. Western grouping in threes aligns with how English speakers read large numbers (millions, thousands, ones). But the Indian numbering system groups differently: the last three digits together, then pairs after that, so 1234567 reads as 12,34,567 (twelve lakh thirty-four thousand five hundred sixty-seven). Per-digit tokenization is clean for arithmetic but uses more tokens. There's no free lunch, and there isn't even a single convention the world agrees on. Every scheme trades something off.
 
-And critically: **different models made different choices here.** That's not a bug; it's a design decision baked into each tokenizer. Understanding the decision is what lets you use it to your advantage.
+And critically: **different models made different choices here.** It's a design decision baked into each tokenizer. Understanding the decision is what lets you use it to your advantage.
 
 ## Tokenization vs. pretokenization
 
@@ -162,7 +162,7 @@ Qwen:   ... |\p{N}| ...           # single digit
 
 One dropped quantifier — `{1,3}` becomes nothing. That's the entire difference. But it *flips the correct input rewrite completely.*
 
-OLMo chunks digits in threes, so `45872103` splits badly and you want to **add** commas to fix the grouping. Qwen tokenizes every digit on its own, so `45872103` is *already* clean single digits, which is exactly what the arithmetic literature says you want. Adding commas to Qwen input would jam useless punctuation tokens between digits that were already fine. So for Qwen, you do the **exact opposite**: strip the separators.
+OLMo chunks digits in threes, so `45872103` splits badly, and you want to **add** commas to fix the grouping. Qwen tokenizes every digit on its own, so `45872103` is *already* clean single digits, which is exactly what the arithmetic literature says you want. Adding commas to Qwen input would jam useless punctuation tokens between digits that were already fine. So for Qwen, you do the **exact opposite**: strip the separators.
 
 ```
 For OLMo:                          For Qwen:
@@ -179,7 +179,7 @@ def strip_number_punctuation(text: str) -> str:
                   lambda m: re.sub(r'[,_ ]', '', m.group()), text)
 ```
 
-Same goal, opposite operation, entirely because of one regex branch. Read your model's regex before you apply any rewrite. The right move depends on it, and a trick that helps one model can hurt another.
+Same goal, opposite operation, entirely because of one regex branch. Read your model's regex before you apply any rewrite. The right move depends on it, and a fix that helps one model can hurt another.
 
 This generalizes. OLMo, Llama 3, and Phi-4 all share the identical `cl100k` pattern with `\p{N}{1,3}`, so number rewrites transfer across all three. Qwen is the outlier. You can predict which camp a model is in just by reading one branch of its regex — before running a single token through it.
 
