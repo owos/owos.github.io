@@ -1,5 +1,5 @@
 ---
-title: LLM Pre-Pretokenization: Free Gains You Leave on the Table
+title: LLM Pretokenization: Free Gains You Leave on the Table
 date: 2026-08-05
 ---
 
@@ -283,3 +283,16 @@ Pretokenization sits upstream of everything the model does. It's cheap to inspec
 - **Token healing** is a free, model-agnostic win at the prompt/generation boundary.
 
 The longer-term answer may be to drop the hand-written regex entirely — which is exactly what adaptive tokenization approaches like [FlexiTokens](https://arxiv.org/abs/2507.12720) (Owodunni et al., 2026) are after. But until then, the regex is sitting right there in your tokenizer config, and reading it pays for itself.
+
+## Cite this post
+
+```bibtex
+@misc{owodunni2026pretokenization,
+  author       = {Owodunni, Abraham},
+  title        = {LLM Pretokenization: Free Gains You Leave on the Table},
+  year         = {2026},
+  month        = {7},
+  url = {\url{https://owos.github.io/blog/pretokenization/post.html?post=pretokenization_blog.md}},
+  note         = {Blog post, adapted from a talk at PyOhio 2026}
+}
+```
