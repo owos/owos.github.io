@@ -1,12 +1,21 @@
 [
   {
+    "venue": "Preprint",
+    "year": "2026",
+    "title": "Dynamic Multi-Byte Prediction With Hierarchical Language Models",
+    "desc": "Byte-level hierarchical language models are slow because they generate one byte at a time. We propose multi-byte prediction (MBP), which predicts several bytes in parallel with no extra parameters, using a variable-length window aligned to the model's learned segments and a Latent Causal Attention (LCA) mask that keeps generation causal.",
+    "url": "https://arxiv.org/abs/2608.15454",
+    "image": "assets/img/papers/mbp_architecture.png",
+    "reverse": false
+  },
+  {
     "venue": "ACL",
     "year": "2026",
     "title": "FLEXITOKENS: Flexible Tokenization for Evolving Language Models",
     "desc": "We propose a flexible tokenization framework that allows language models to adapt their tokenization strategy during training and inference, enabling better handling of evolving vocabularies and multilingual text.",
     "url": "https://arxiv.org/abs/2507.12720",
     "image": "assets/img/papers/flexitoken_vs_BPE.png",
-    "reverse": false
+    "reverse": true
   },
   {
     "venue": "TMLR",
@@ -15,7 +24,7 @@
     "desc": "We propose LayRA (Layer-Selective LoRA), which adds new languages and instruction-tuning to pre-trained multilingual models by applying low-rank adapters only to the initial and final layers — preserving existing language capabilities while efficiently learning new ones.",
     "url": "https://arxiv.org/abs/2509.11414",
     "image": "assets/img/papers/layra.jpg",
-    "reverse": true
+    "reverse": false
   },
   {
     "venue": "ACL",
@@ -25,9 +34,8 @@
     "desc": "A pan-African medical QA benchmark evaluating large language models on medical knowledge across African healthcare contexts. Joint work with partners from Google, PATH, Intron, and Sinsoke.",
     "url": "publications.html",
     "image": "assets/img/papers/afrimedqa.png",
-    "reverse": false
+    "reverse": true
   },
-  
   {
     "venue": "EMNLP",
     "year": "2022",
@@ -35,6 +43,6 @@
     "desc": "A linguistically diverse collection of multimodal and multilingual datasets covering 363 languages across 32 language families — among the most multilingual datasets for language modeling, image captioning, and speech.",
     "url": "https://aclanthology.org/2022.emnlp-main.590",
     "image": "assets/img/papers/bloom.png",
-    "reverse": true
+    "reverse": false
   }
 ]

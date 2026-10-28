@@ -2,7 +2,12 @@
   {
     "year": "2026",
     "papers": [
-      
+      {
+        "venue": "Preprint",
+        "title": "Dynamic Multi-Byte Prediction With Hierarchical Language Models",
+        "authors": "<me>Abraham Owodunni</me>, Chibuzor Okocha, Christan Grant, Tomasz Limisiewicz, and Sachin Kumar",
+        "url": "https://arxiv.org/abs/2608.15454"
+      },
       {
         "venue": "ACL 2026",
         "title": "FLEXITOKENS: Flexible Tokenization for Evolving Language Models",

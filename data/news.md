@@ -1,3 +1,7 @@
+**Aug 2026** — New preprint: [Dynamic Multi-Byte Prediction With Hierarchical Language Models](https://arxiv.org/abs/2608.15454). We make byte-level language models faster by predicting several bytes at once.
+
+**Jul 2026** — Gave a talk at [PyOhio 2026](https://www.pyohio.org/2026/program/talks/llm-token-healing-and-regex/) on LLM pretokenization. Read the [blog post](blog/pretokenization/post.html) or see the [slides](https://docs.google.com/presentation/d/1u_OCxVZzMzTCbRfEEogaqtSYrKMZ58cnR3tvdh0v-n4).
+
 **Jul 2025** — 🏆 [AfriMed-QA](https://2025.aclweb.org/program/awards/#best-social-impact-paper) won the **Best Social Impact Paper** award at [ACL 2025](https://2025.aclweb.org)!
 
 **Jul 2025** — New preprint: [FLEXITOKENS: Flexible Tokenization for Evolving Language Models](https://arxiv.org/abs/2507.12720). Presenting at the ICML 2025 tokenization workshop.
